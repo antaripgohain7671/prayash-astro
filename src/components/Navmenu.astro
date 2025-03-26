@@ -1,0 +1,70 @@
+---
+const navItems = [
+  { name: "Home", link: "/" },
+  { name: "About", link: "/about" },
+];
+
+const academicSubmenu = [
+  { name: "Fee Structure", link: "/fee-structure" },
+  { name: "Exam", link: "/exam" },
+  { name: "Courses", link: "/courses" },
+];
+---
+
+<nav class="navbar bg-base-100 text-base-content shadow-md px-4 py-3">
+  <div class="container mx-auto flex justify-between items-center">
+
+    <!-- Mobile Menu Button -->
+    <div class="navbar-start flex lg:hidden">
+      <div class="dropdown">
+        <label tabindex="0" class="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-8 w-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </label>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-2 p-2 shadow bg-base-200 rounded-box w-52 z-50">
+          {navItems.map(item => (
+            <li><a href={item.link} class="hover:text-primary px-4 py-2">{item.name}</a></li>
+          ))}
+          <!-- Academic Submenu for Mobile -->
+          <li>
+            <details>
+              <summary class="hover:text-secondary px-4 py-2">Academic</summary>
+              <ul class="p-2 bg-base-300 rounded-md">
+                {academicSubmenu.map(subItem => (
+                  <li><a href={subItem.link} class="hover:text-accent px-4 py-2">{subItem.name}</a></li>
+                ))}
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Logo (Centered on Desktop) -->
+    <div class="navbar-center lg:flex-1 lg:text-center">
+      <a href="/" class="text-xl font-bold text-primary-content">School Name</a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="navbar-end hidden lg:flex">
+      <ul class="menu menu-horizontal px-1 gap-4">
+        {navItems.map(item => (
+          <li><a href={item.link} class="hover:text-primary px-4 py-2">{item.name}</a></li>
+        ))}
+        <!-- Academic Dropdown for Desktop -->
+        <li tabindex="0" class="relative">
+          <details class="dropdown">
+            <summary class="hover:text-secondary px-4 py-2">Academic</summary>
+            <ul class="absolute left-0 mt-2 p-2 bg-base-300 text-neutral-content rounded-md shadow-md w-48 z-50">
+              {academicSubmenu.map(subItem => (
+                <li><a href={subItem.link} class="hover:text-accent px-4 py-2">{subItem.name}</a></li>
+              ))}
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
