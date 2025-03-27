@@ -1,7 +1,24 @@
 ---
+import { getCollection } from "astro:content";
 // import EventsCarousel from '../components/EventsCarousel.astro';
 import BaseLayout from "../layouts/BaseLayout.astro";
-// import LatestNews from '../components/LatestNews.astro';
+import Newscards from "../components/Newscards.astro";
+const generateSummary = (body: string, wordCount: number = 20): string => {
+  if (!body) return ''; // Handle empty input
+  return body.split(" ").slice(0, wordCount).join(" ") + "...";
+};
+const allNews = await getCollection("news");
+const sortByDateDescending = <T extends { data: { date: Date | string } }>(
+  a: T, 
+  b: T
+): number => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+};
+
+const newsEntries = allNews
+  .filter(({ data }) => new Date(data.date) <= new Date())
+  .sort(sortByDateDescending)
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Home">
@@ -23,6 +40,24 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <!-- About Section -->
 
     <!-- Latest News Section -->
+    <section class="container mx-auto p-6">
+      <h1 class="text-2xl font-bold text-center text-primary">Latest News</h1>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        {newsEntries.map(news => (
+          <div class="block p-4 bg-base-100 shadow-md rounded-lg hover:shadow-lg transition">
+            <h2 class="text-xl font-bold text-primary">{news.data.title}</h2>
+            <p class="text-sm text-gray-500">{new Date(news.data.date).toLocaleDateString()}</p>
+            <p class="mt-2 text-base-content">{generateSummary(news.body)}</p>
+            <a 
+              href={`/news/${news.slug}`} 
+              class="mt-4 inline-block bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary transition"
+            >
+              Read More →
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
     <!-- <LatestNews /> -->
     <!-- Events Carousel -->
     <!-- <EventsCarousel /> -->

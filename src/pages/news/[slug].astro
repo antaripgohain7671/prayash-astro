@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Define static paths
+export async function getStaticPaths() {
+  const newsEntries = await getCollection("news");
+
+  return newsEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { article: entry }, // Pass the article as a prop
+  }));
+}
+
+// Get the article from the props
+const { article } = Astro.props;
+
+if (!article) {
+  throw new Error(`News article not found.`);
+}
+---
+
+<BaseLayout title={article.data.title}>
+  <article class="prose prose-lg container mx-auto p-6">
+    <h1 class="text-4xl font-bold">{article.data.title}</h1>
+    <p class="text-sm text-gray-500">{new Date(article.data.date).toLocaleDateString()}</p>
+    
+    <!-- ✅ Fix: Render Markdown content correctly -->
+    <div class="mt-4 text-lg" set:html={article.body}></div>
+  </article>
+</BaseLayout>

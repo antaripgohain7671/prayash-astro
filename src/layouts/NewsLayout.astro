@@ -1,21 +1,26 @@
 ---
-const { title, date, author, description } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title} - News</title>
-</head>
-<body class="bg-base-100 text-base-content">
-  <main class="container mx-auto p-6">
-    <article class="prose lg:prose-xl mx-auto">
-      <h1 class="text-primary">{title}</h1>
-      <p class="text-sm text-gray-500">{date} • By {author}</p>
-      <p class="text-lg text-gray-700 italic">{description}</p>
-      <slot /> <!-- This will insert the Markdown content -->
-    </article>
-  </main>
-</body>
-</html>
+<article class="news-article">
+  <h1 class="text-2xl font-bold mb-4">{frontmatter.title}</h1>
+  <div class="metadata flex justify-between text-gray-600 mb-4">
+    <span>Published on {frontmatter.date}</span>
+    <span>{frontmatter.author}</span>
+  </div>
+  <img 
+    src={frontmatter.image} 
+    alt={frontmatter.title} 
+    class="w-full h-64 object-cover mb-4"
+  />
+  <div class="article-content">
+    <slot />
+  </div>
+</article>
+
+<style>
+  .news-article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+</style>
