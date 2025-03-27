@@ -1,0 +1,21 @@
+---
+const { title, date, author, description } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} - News</title>
+</head>
+<body class="bg-base-100 text-base-content">
+  <main class="container mx-auto p-6">
+    <article class="prose lg:prose-xl mx-auto">
+      <h1 class="text-primary">{title}</h1>
+      <p class="text-sm text-gray-500">{date} • By {author}</p>
+      <p class="text-lg text-gray-700 italic">{description}</p>
+      <slot /> <!-- This will insert the Markdown content -->
+    </article>
+  </main>
+</body>
+</html>
