@@ -11,7 +11,7 @@ const academicSubmenu = [
 ];
 ---
 
-<nav class="navbar bg-base-100 text-base-content shadow-md px-4 py-3">
+<nav class="navbar bg-secondary text-secondary-content shadow-md px-4 py-3">
   <div class="container mx-auto flex justify-between items-center">
 
     <!-- Mobile Menu Button -->
@@ -22,15 +22,15 @@ const academicSubmenu = [
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
           </svg>
         </label>
-        <ul tabindex="0" class="menu menu-sm dropdown-content mt-2 p-2 shadow bg-base-200 rounded-box w-52 z-50">
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-2 p-2 shadow bg-secondary rounded-box w-52 z-50">
           {navItems.map(item => (
             <li><a href={item.link} class="hover:text-primary px-4 py-2">{item.name}</a></li>
           ))}
           <!-- Academic Submenu for Mobile -->
           <li>
             <details>
-              <summary class="hover:text-secondary px-4 py-2">Academic</summary>
-              <ul class="p-2 bg-base-300 rounded-md">
+              <summary class="hover:text-secondary-content px-4 py-2">Academic</summary>
+              <ul class="p-2 bg-neutral rounded-md">
                 {academicSubmenu.map(subItem => (
                   <li><a href={subItem.link} class="hover:text-accent px-4 py-2">{subItem.name}</a></li>
                 ))}
@@ -43,7 +43,7 @@ const academicSubmenu = [
 
     <!-- Logo (Centered on Desktop) -->
     <div class="navbar-center lg:flex-1 lg:text-center">
-      <a href="/" class="text-xl font-bold text-primary-content">School Name</a>
+      <a href="/" class="text-xl font-bold text-primary-content">Prayash Academy Golaghat</a>
     </div>
 
     <!-- Desktop Menu -->
@@ -55,8 +55,8 @@ const academicSubmenu = [
         <!-- Academic Dropdown for Desktop -->
         <li tabindex="0" class="relative">
           <details class="dropdown">
-            <summary class="hover:text-secondary px-4 py-2">Academic</summary>
-            <ul class="absolute left-0 mt-2 p-2 bg-base-300 text-neutral-content rounded-md shadow-md w-48 z-50">
+            <summary class="hover:text-secondary-content px-4 py-2">Academic</summary>
+            <ul class="absolute left-0 mt-2 p-2 bg-base-300 text-neutral rounded-md shadow-md w-48 z-50">
               {academicSubmenu.map(subItem => (
                 <li><a href={subItem.link} class="hover:text-accent px-4 py-2">{subItem.name}</a></li>
               ))}
