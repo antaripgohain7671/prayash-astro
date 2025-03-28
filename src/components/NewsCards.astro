@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import generateSummary from "../utils/generateSummary.js";
+// Fetch news articles
+const allNews = await getCollection("news");
+// Sort by date (newest first) and filter future dates
+const sortByDateDescending = <T extends { data: { date: Date | string } }>(
+  a: T, 
+  b: T
+): number => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+};
+
+const newsEntries = allNews
+  .filter(({ data }) => new Date(data.date) <= new Date())
+  .sort(sortByDateDescending)
+  .slice(0, 3);
+---
+
+
+<section class="container mx-auto p-6">
+    <h1 class="text-2xl font-bold text-center text-primary">Latest News</h1>
+    {newsEntries.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        {newsEntries.map(news => (
+          <div class="bg-white p-4 shadow-md rounded-lg">
+            <h2 class="text-xl font-semibold">{news.data.title}</h2>
+            <p class="text-sm text-gray-500">{new Date(news.data.date).toLocaleDateString()}</p>
+            <p class="mt-2 text-gray-700">{generateSummary(news.body)}</p>
+            <a href={`/news/${news.slug}`} class="text-blue-500 mt-2 inline-block">Read More →</a>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p class="text-center text-gray-500">No news available at the moment.</p>
+    )}
+  </section>

@@ -3,7 +3,6 @@
 @plugin "daisyui"{
   theme: emerald --default;
 }
-@plugin '@tailwindcss/typography';
 @plugin "daisyui/theme" {
   name: "emerald";
   default: false;
