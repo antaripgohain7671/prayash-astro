@@ -1,0 +1,22 @@
+---
+interface MarqueeItem {
+  text: string;
+  link: string;
+}
+
+// Define expected props with default values
+const { showMarquee = false, marqueeItems = [] } = Astro.props as { 
+  showMarquee?: boolean; 
+  marqueeItems?: MarqueeItem[];
+};
+if (!showMarquee || !marqueeItems.length) return null;
+---
+<div class="overflow-hidden whitespace-nowrap relative w-full bg-info px-0.5 py-0">
+  <marquee class="inline-flex gap-8 min-w-full">
+    {marqueeItems.concat(marqueeItems).map((item, index) => (
+      <a href={item.link} class="text-lg gap-16 font-semibold text-info-content hover:underline">
+        {item.text} &bull;
+      </a>
+    ))}
+  </div>
+</div>

@@ -1,10 +1,17 @@
 ---
-// import EventsCarousel from '../components/EventsCarousel.astro';
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NewsCards from "../components/NewsCards.astro";
+import Marquee from "../components/Marquee.astro";
+const showMarquee = false; //control if marquee is visible or not
+const marqueeItems = [
+  { text: "Nothing", link: "/" },
+  { text: "Yet", link: "/" },
+  { text: "added", link: "/" }
+];
 ---
 
 <BaseLayout title="Home">
+  <Marquee showMarquee={showMarquee} marqueeItems={marqueeItems} />
   <!-- Hero Section -->
   <section
     class="relative w-full h-screen flex items-center justify-center bg-cover bg-center"
@@ -18,10 +25,19 @@ import NewsCards from "../components/NewsCards.astro";
       style="opacity: 0.95"
     >
       <h1 class="text-5xl font-bold text-base-100 drop-shadow-lg">
-        Welcome to Prayash Academy
+        Welcome to Prayash Academy, Golaghat
       </h1>
       <p class="mt-4 text-lg text-base-200">
-        Empowering students for a brighter future
+        A Junior Collage of Arts, Commerce & Scince 
+      </p>
+      <p class="mt-1 text-normal text-base-200">
+        Under AHSEC 
+      </p>
+      <p class="mt-1 text-normal text-base-200">
+        AHSEC/RPR/57/06/9514 
+      </p>
+      <p class="mt-1 text-sm text-base-200">
+        ESTD: 2010 
       </p>
       <a
         href="/about-us"
