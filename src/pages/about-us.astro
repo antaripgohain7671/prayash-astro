@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About Us">
+  <section class="container mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <!-- Image Section -->
+      <div class="relative w-full h-96">
+        <img
+          src="/pictures/front_wide.jpg"
+          alt="Our School Building"
+          class="w-full h-full object-cover rounded-lg shadow-lg"
+        />
+      </div>
+
+      <!-- Text Section -->
+      <div class="flex flex-col justify-center">
+        <h1 class="text-4xl font-bold text-primary">About Prayash Academy</h1>
+        <p class="mt-4 text-lg text-gray-600">
+          Prayash Academy, Golaghat was established in the year 2010 under the
+          able guidence of a few noted educationas of golaghat under the banner
+          'Society for Prayash Academy' Golaghat. (Regd.No:- RS/GOLA/230/C/45 of
+          2010-2011)
+        </p>
+        <p class="mt-2 text-gray-500">
+          From our experienced faculty to our modern facilities, we ensure that
+          every student gets the best learning experience possible.
+        </p>
+
+        <!-- Call to Action -->
+        <a
+          href="/courses"
+          class="mt-6 inline-block bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-focus transition"
+        >
+          Explore Our Programs
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Objectives Section -->
+  <section
+    class="container mx-auto px-6 py-16 bg-base-200 rounded-lg shadow-md mt-10"
+  >
+    <h2 class="text-3xl font-semibold text-center text-primary">
+      Our Objectives
+    </h2>
+    <p class="text-center text-gray-600 mt-2">
+      We aim to create a strong foundation for our students by focusing on key
+      objectives.
+    </p>
+
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Objective 1 -->
+      <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-2xl font-bold text-primary">1. Academic Excellence</h3>
+        <p class="mt-2 text-gray-600">
+          The cheif objective of this academy is to establish a qualitative
+          educational foundation for fulfillng the national aim of education.
+        </p>
+      </div>
+      
+      <!-- Objective 2 -->
+      <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-2xl font-bold text-primary">
+          2. Democratic Values and Principles
+        </h3>
+        <p class="mt-2 text-gray-600">
+          To trail the students in the right prespective with the inoculation of
+          the abiding democratic values and principles.
+        </p>
+      </div>
+
+      <!-- Objective 3 -->
+      <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-2xl font-bold text-primary">
+          3. Cultural Preservation and Harmony
+        </h3>
+        <p class="mt-2 text-gray-600">
+          The primary objective of this initiative is to promote and preserve
+          the cultural values and develop a congenial cultural atmosphere
+          thereby fostering a sense of belonging and unity among students.
+        </p>
+      </div>
+
+      <!-- Objective 4 -->
+      <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-2xl font-bold text-primary">
+          4. Global Understanding and Brotherhood
+        </h3>
+        <p class="mt-2 text-gray-600">
+          The aim of this initiative is to create an open environment where
+          diverse perspectives are valued, thereby fostering mutual respect and
+          collaboration on a global scale.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- Location Section -->
+  <section
+    class="container mx-auto px-6 py-16 bg-base-100 rounded-lg shadow-md mt-10 flex flex-col lg:flex-row items-center"
+  >
+    <!-- Left Side: Address Details -->
+    <div class="lg:w-1/2 text-center lg:text-left mb-6 lg:mb-0">
+      <h2 class="text-3xl font-bold text-primary">Our Location</h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Prayash Academy<br />
+        Near Santipur Jame Masjid, Court Road, Golaghat, Assam-785621<br />
+        Phone: +91 9101085284, +91 8011118375 <br />
+        Email: <a
+          href="mailto:info@prayashacademy.com"
+          class="text-accent hover:underline"
+        >
+          info@prayashacademy.com
+        </a>
+      </p>
+    </div>
+
+    <!-- Right Side: Google Map -->
+    <div class="lg:w-1/2">
+      <iframe
+        class="w-full h-64 rounded-lg shadow-lg"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3570.065705543998!2d93.9703782!3d26.5180112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37468e6883ef5f2d%3A0x60aaff956ad2230b!2sPrayash%20Academy!5e0!3m2!1sen!2sin!4v1743189323622!5m2!1sen!2sin"
+      >
+      </iframe>
+    </div>
+  </section>
+  <!-- Contact Form Section -->
+</BaseLayout>
