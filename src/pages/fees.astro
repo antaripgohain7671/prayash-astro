@@ -1,0 +1,18 @@
+---
+const pdfFile = "/pdfs/fees-2025.pdf"; // Change to your PDF file
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Fee Details">
+  <section class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-primary mb-4">Fee Strucutre</h1>
+    <h3 class="text-lg font-bold text-base-content mb-3">Last Updated: 29-03-2025</h3>
+    <div class="bg-base-100 shadow-lg p-4 rounded-lg">
+      <embed src={pdfFile} type="application/pdf" class="w-full h-[500px] rounded-lg" />
+      <a href={pdfFile} target="_blank" class="btn btn-primary mt-4 w-full">
+        View Full PDF
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
